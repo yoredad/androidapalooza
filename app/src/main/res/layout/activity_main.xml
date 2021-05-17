@@ -4,15 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:visibility="visible"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
-    <TextView
+    <EditText
+        android:id="@+id/textBox"
+        android:layout_width="286dp"
+        android:layout_height="56dp"
+        android:background="@drawable/edit_text_border"
+        android:duplicateParentState="false"
+        android:editable="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="98dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="sendMessage"
+        android:text="Submit"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textBox" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="388dp"
+        android:layout_height="620dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBox"
+        app:layout_constraintVertical_bias="0.22000003">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="38"
+                android:text="TextView" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
