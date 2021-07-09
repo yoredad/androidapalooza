@@ -9,12 +9,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.feezor.androidapalooza.domain.Person;
+import org.feezor.utils.FileUtils;
+import org.feezor.utils.GsonUtils;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initialize();
     }
     /** Called when the user taps the Send button */
     public void sendMessage( View view) {
@@ -35,5 +42,16 @@ public class MainActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void initialize() {
+        try {
+            String json = FileUtils.getFileFromResourceAsString(this.getResources().openRawResource(R.raw.sample));
+            System.out.println(json);
+            Person p = GsonUtils.fromJson(json, Person.class);
+            System.out.println(p.getName()+" - "+p.getAge());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
